@@ -1,0 +1,146 @@
+[2018-27-04:01:24:52] Action for membatalkan penawaran User 'admin' Sukses
+
+[2018-27-04:02:25:16] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:02:29:05] Action for Insert LOD User 'admin' Sukses
+
+[2018-27-04:02:31:03] Action for Insert LOD User 'admin' Sukses
+
+[2018-27-04:02:33:28] Action for Insert LOD User 'admin' Sukses
+
+[2018-27-04:02:36:36] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:02:37:59] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:02:40:22] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:06:39:37] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:03:30:38] Action for login 'admin' Sukses
+
+[2018-27-04:08:38:45] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:08:55:57] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:08:57:15] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:09:00:44] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:04:01:34] Action for login 'admin' Sukses
+
+[2018-27-04:09:17:41] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:09:19:05] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:09:21:51] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:09:23:22] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:09:24:37] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:10:37:10] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:10:38:34] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:10:39:53] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:10:41:06] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:10:44:39] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:10:46:21] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:10:47:09] Action for Insert LOD User 'admin' Gagal
+
+[2018-27-04:05:54:50] Action for login 'admin' Sukses
+
+[2018-27-04:06:11:11] Action for login 'admin' Sukses
+
+[2018-23-05:05:11:39] Action for login 'admin' Sukses
+
+[2018-23-05:06:07:07] Action for login 'admin' Sukses
+
+[2018-24-05:03:05:54] Action for login 'admin' Sukses
+
+[2018-24-05:04:42:51] Action for login 'admin' Sukses
+
+[2018-25-05:08:09:56] Action for login 'admin' Sukses
+
+[2018-28-05:03:14:39] Action for login 'admin' Sukses
+
+[2018-28-05:08:57:48] Action for login 'admin' Sukses
+
+[2018-28-05:09:04:20] Action for login 'admin' Sukses
+
+[2018-29-05:02:53:38] Action for login 'admin' Sukses
+
+[2018-29-05:08:22:25] Action for login 'admin' Sukses
+
+[2018-29-05:13:22:48] Action for Insert pp User 'admin' Sukses
+
+[2018-30-05:02:42:48] Action for login 'admin' Sukses
+
+[2018-30-05:09:50:50] Action for Insert pp User 'admin' Sukses
+
+[2018-30-05:06:19:51] Action for login 'admin' Sukses
+
+[2018-30-05:06:21:25] Action for login 'admin' Sukses
+
+[2018-30-05:06:41:47] Action for login 'admin' Sukses
+
+[2018-31-05:02:56:05] Action for login 'admin' Sukses
+
+[2018-31-05:10:40:25] Action for login 'admin' Sukses
+
+[2018-31-05:10:58:14] Action for login 'admin' Sukses
+
+[2018-04-06:03:06:20] Action for login 'admin' Sukses
+
+[2018-04-06:04:20:10] Action for login 'admin' Sukses
+
+[2018-04-06:09:46:16] Action for Insert pp User 'admin' Sukses
+
+[2018-04-06:10:31:54] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:32:08] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:32:45] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:32:55] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:35:12] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:35:33] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:40:09] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:40:27] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:46:53] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:10:56:27] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:13:41:05] Action for Insert pp User 'admin' Sukses
+
+[2018-04-06:13:41:47] Action for Insert pp User 'admin' Sukses
+
+[2018-04-06:13:44:05] Action for Insert pp User 'admin' Sukses
+
+[2018-04-06:13:45:15] Action for Insert pp User 'admin' Sukses
+
+[2018-04-06:13:48:44] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:14:18:57] Action for Update pp User 'admin' Gagal
+
+[2018-04-06:14:21:30] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:14:24:59] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:14:26:58] Action for Insert pp User 'admin' Sukses
+
+[2018-04-06:14:27:18] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:14:27:57] Action for Update pp User 'admin' Sukses
+
+[2018-04-06:09:57:22] Action for login 'admin' Sukses
+
