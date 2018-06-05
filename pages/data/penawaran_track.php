@@ -35,7 +35,7 @@
 			if(isset($_GET['action']) and $_GET['action'] == "track") {
 						$row = mysql_fetch_array($penawaran_hdr);
 						$sub_total = $row['sub_total'];
-						$kode_penawaran = $row['kode_penawaran'];
+						$kode_pp = $row['kode_pp'];
 						$diskon = $row['diskon_hdr'];
 						$ppn = $row['ppn'];
 						$grand_totaltrack = ($sub_total-$diskon)+$ppn;
@@ -58,7 +58,7 @@
                                 <form role="form" method="post" action="">								
 										<div class="form-group">
 											<label class="control-label col-md-6 col-sm-2 col-xs-12">No Penawaran</label>
-											<input type="text" name="kode_penawaran" id="kode_penawaran" value="<?=$row['kode_penawaran']?>" class="form-control" readonly>
+											<input type="text" name="kode_pp" id="kode_pp" value="<?=$row['kode_pp']?>" class="form-control" readonly>
                                            
                                         
                                    
@@ -334,7 +334,7 @@ if ($row['status']==1) {
                 <!-- heading modal -->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">PEMBATALAN (<?=$kode_penawaran?>)</h4>
+                    <h4 class="modal-title">PEMBATALAN (<?=$kode_pp?>)</h4>
                 </div>
 <form id="frm" name="frm"  method="post" action="">                  
                 <!-- body modal -->                
@@ -343,7 +343,7 @@ if ($row['status']==1) {
                 		<div class="controls alert alert-success">
                         <label class="control-label"> <strong>Alasan Pembatalan</strong></label>
                         <textarea class="form-control" name="alasan_batal" id="alasan_batal" placeholder="Alasan Batal..."></textarea>
-                        <input type="hidden" name="kode_penawaran" id="kode_penawaran"  value="<?=$kode_penawaran?>" class="form-control" readonly="readonly">
+                        <input type="hidden" name="kode_pp" id="kode_pp"  value="<?=$kode_pp?>" class="form-control" readonly="readonly">
      <!--              		<select id="kode_inventori1" class="chzn-select" name="kode_inventori1" data-placeholder="Pilih Barang">
                         	<option value=""></option>
                         	

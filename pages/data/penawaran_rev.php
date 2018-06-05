@@ -41,8 +41,8 @@
                          
 									<form role="form" method="post" action="" id="editForm">								
 										<div class="form-group">
-											<label class="control-label col-md-6 col-sm-2 col-xs-12">No Penawaran</label>
-											<input type="text" name="kode_penawaran" id="kode_penawaran" url="<?=base_url()?>ajax/r_penawaran.php" autocomplete="off" class="form-control" placeholder="Input Kode Penawaran / Ambil Data Dari PP" value="<?=(isset($row['kode_penawaran']) ? $row['kode_penawaran'] : '')?>" readonly required>
+											<label class="control-label col-md-6 col-sm-2 col-xs-12">No PP</label>
+											<input type="text" name="kode_pp" id="kode_penawaran" url="<?=base_url()?>ajax/r_penawaran.php" autocomplete="off" class="form-control" placeholder="Input Kode Penawaran / Ambil Data Dari PP" value="<?=(isset($row['kode_pp']) ? $row['kode_pp'] : '')?>" readonly required>
                                          
                             <input type="hidden" name="id_form" id="id_form" value="<?php echo $id_form; ?>"/> 
                                          <input type="hidden" value="<?=RandomString() ?>"  id="token" name="token" class="form-control" >
@@ -51,51 +51,51 @@
 									</div> 
                                     <div class="form-group">
 											<label class="control-label col-md-6 col-sm-6 col-xs-12">Opsi</label>
-											<input type="text" name="versi" id="versi" class="form-control" placeholder="Versi..." value="<?=(isset($row['kode_penawaran']) ? $row['versi'] : '')?>" readonly required>
+											<input type="text" name="versi" id="versi" class="form-control" placeholder="Versi..." value="<?=(isset($row['kode_pp']) ? $row['versi'] : '')?>" readonly required>
 									</div> 
                                     <div class="form-group">
 											<label class="control-label col-md-6 col-sm-6 col-xs-12">Dengan Hormat</label>
-											<input type="text" name="dengan_hormat" id="dengan_hormat" class="form-control" value="<?=(isset($row['kode_penawaran']) ? $row['dengan_hormat'] : '')?>" placeholder="dengan hormat..." required>
+											<input type="text" name="dengan_hormat" id="dengan_hormat" class="form-control" value="<?=(isset($row['kode_pp']) ? $row['dengan_hormat'] : '')?>" placeholder="dengan hormat..." required>
 									</div>
                                     <div class="form-group">
 											<label class="control-label col-md-2 col-sm-2 col-xs-12">Tanggal</label>
 											<div>
                                             <?php
 											$tanggal= date("d-m-Y", strtotime($row['tanggal']));; ?>
-												<input type="text" value="<?=(isset($row['kode_penawaran']) ? $tanggal : '')?>" name="tanggal" id="tanggal" data-date-format="dd-mm-yyyy"  class="form-control" autocomplete="off" required/>
+												<input type="text" value="<?=(isset($row['kode_pp']) ? $tanggal : '')?>" name="tanggal" id="tanggal" data-date-format="dd-mm-yyyy"  class="form-control" autocomplete="off" required/>
 											</div>  
 										</div>
                             
 							
 										<div class="form-group">
 											<label class="control-label col-md-6 col-sm-6 col-xs-12">Kepada Nama Perusahaan</label>
-											<input type="text" name="nama_perusahaan" id="nama_perusahaan" class="form-control" placeholder="Kepada Perusahaan Yang Di Beri Penawaran..." value="<?=(isset($row['kode_penawaran']) ? $row['kepada'] : '')?>" required>
+											<input type="text" name="nama_perusahaan" id="nama_perusahaan" class="form-control" placeholder="Kepada Perusahaan Yang Di Beri Penawaran..." value="<?=(isset($row['kode_pp']) ? $row['kepada'] : '')?>" required>
 
 										</div>
                                         <div class="form-group">
 											<label class="control-label col-md-2 col-sm-2 col-xs-12">Up</label>
-											<input type="text" name="up" id="up" class="form-control" placeholder="Up..." value="<?=(isset($row['kode_penawaran']) ? $row['Up'] : '')?>" required>
+											<input type="text" name="up" id="up" class="form-control" placeholder="Up..." value="<?=(isset($row['kode_pp']) ? $row['Up'] : '')?>" required>
 										</div>
                                         <div class="form-group">
 											<label class="control-label col-md-2 col-sm-2 col-xs-12">Perihal</label>
-											<input type="text" value="<?=(isset($row['kode_penawaran']) ? $row['perihal'] : '')?>" name="perihal" id="perihal" class="form-control" placeholder="Perihal..." required>
+											<input type="text" value="<?=(isset($row['kode_pp']) ? $row['perihal'] : '')?>" name="perihal" id="perihal" class="form-control" placeholder="Perihal..." required>
 										</div>
                                         <div class="form-group">
 											<label class="control-label col-md-2 col-sm-2 col-xs-12">Kategori</label>
 											<select id="kategori" name="kategori" class="form-control">
                                                 <option value="0">-- Pilih Kategori --</option>
-                                                <option value="Service" <?php if(isset($row['kode_penawaran'])) {if($row['kategori']=='Service'){ echo 'selected';}} ?>>Service</option>
-                                                <option value="Project" <?php if(isset($row['kode_penawaran'])) {if($row['kategori']=='Project'){ echo 'selected';}} ?>>Project</option>
+                                                <option value="Service" <?php if(isset($row['kode_pp'])) {if($row['kategori']=='Service'){ echo 'selected';}} ?>>Service</option>
+                                                <option value="Project" <?php if(isset($row['kode_pp'])) {if($row['kategori']=='Project'){ echo 'selected';}} ?>>Project</option>
                                             </select>
 										</div>
                                         <div class="form-group">
 											<label class="control-label col-md-2 col-sm-2 col-xs-12">Hormat Kami</label>
-											<input type="text" name="hormat_kami" id="hormat_kami" value="<?=(isset($row['kode_penawaran']) ? $row['hormat_kami'] : '')?>" class="form-control" placeholder="hormat kami..." required>
+											<input type="text" name="hormat_kami" id="hormat_kami" value="<?=(isset($row['kode_pp']) ? $row['hormat_kami'] : '')?>" class="form-control" placeholder="hormat kami..." required>
 										</div>
                                        
                                         <div class="form-group">
 											<label class="control-label col-md-2 col-sm-2 col-xs-12">Note</label>
-											<textarea rows="10" class="form-control" name="note" id="notehdr" placeholder="Note..." ><?=(isset($row['kode_penawaran']) ? $row['note'] : '')?>		
+											<textarea rows="10" class="form-control" name="note" id="notehdr" placeholder="Note..." ><?=(isset($row['kode_pp']) ? $row['note'] : '')?>		
 </textarea>
 										</div>
 										
@@ -329,10 +329,10 @@
                                 </b></td> 
                                             <td colspan="6"> <select id="diskon_utama" name="diskon_utama"  class="form-control">
                                                             <option value="0">-- Pilih Diskon --</option>
-                                                            <option value="5" <?php if(isset($row['kode_penawaran'])) {if($row['diskon_persen']=='5'){ echo 'selected';}} ?>>5%</option>
-                                                            <option value="10" <?php if(isset($row['kode_penawaran'])) {if($row['diskon_persen']=='10'){ echo 'selected';}} ?>>10%</option>
-                                                            <option value="15" <?php if(isset($row['kode_penawaran'])) {if($row['diskon_persen']=='15'){ echo 'selected';}} ?>>15%</option>
-                                                            <option value="20" <?php if(isset($row['kode_penawaran'])) {if($row['diskon_persen']=='20'){ echo 'selected';}} ?>>20%</option>
+                                                            <option value="5" <?php if(isset($row['kode_pp'])) {if($row['diskon_persen']=='5'){ echo 'selected';}} ?>>5%</option>
+                                                            <option value="10" <?php if(isset($row['kode_pp'])) {if($row['diskon_persen']=='10'){ echo 'selected';}} ?>>10%</option>
+                                                            <option value="15" <?php if(isset($row['kode_pp'])) {if($row['diskon_persen']=='15'){ echo 'selected';}} ?>>15%</option>
+                                                            <option value="20" <?php if(isset($row['kode_pp'])) {if($row['diskon_persen']=='20'){ echo 'selected';}} ?>>20%</option>
                                                             </select> 
                                             </td>
                                             
@@ -340,7 +340,7 @@
                                             <tr>
                                             <td colspan="6" class="text-right"> <b>PPn
                                 </b></td> 
-                                            <td colspan="6"> <input type="checkbox" name="ppn" id="ppn" value="1" <?php if(isset($row['kode_penawaran'])) {if((int)$row['ppn']>0){ echo 'checked="checked"';}} ?> /></td>
+                                            <td colspan="6"> <input type="checkbox" name="ppn" id="ppn" value="1" <?php if(isset($row['kode_pp'])) {if((int)$row['ppn']>0){ echo 'checked="checked"';}} ?> /></td>
                                             
                                             </tr>
                                            

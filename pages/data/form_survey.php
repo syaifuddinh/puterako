@@ -164,6 +164,7 @@
 										<thead>
 											<tr>
                                                 <th>No</th>
+												<th>Kode Survey</th>
 												<th>Kode Proyek</th>
 												<th>Tanggal</th>
 												<th>Nama Proyek</th>
@@ -176,11 +177,16 @@
 											<?php
 												$n=1; if(mysql_num_rows($q_fs) > 0) { 
 												while($data = mysql_fetch_array($q_fs)) { 
+													$kd_survey = $data['kd_survey'];
+													$ref = $data['ref'];
+													if($ref > 0)
+														$kd_survey .= '_REF_' . $ref;
 												?>
 										        
 											<tr>
                                                 <td> <?php echo $n++ ?></td>
-												<td><a href="<?=base_url()?>?page=form_survey_track&action=track&kode=<?=$data['id_fs_hdr']?>"> <?php echo $data['kd_proyek'];?></a></td>
+												<td><a href="<?=base_url()?>?page=form_survey_track&action=track&kode=<?=$data['id_fs_hdr']?>"> <?php echo $kd_survey;?></a></td>
+												<td> <?php echo $data['kd_proyek'];?></td>
 												<td> <?php echo date("d-m-Y",strtotime($data['tanggal']));?></td>
 												<td> <?php echo $data['nama_proyek'];?></td>
                                                 <td> <?php echo $data['lokasi_hdr'];?></td>

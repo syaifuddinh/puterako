@@ -15,17 +15,17 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 	$token = mres($_GET['token']);
 	$id_form = mres($_GET['id_form']);
 	
-	$q_edit = mysql_query("select * from penawaran_hdr where kode_penawaran = '$kode' AND token='".$token."'");
-	$judul1 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '1' and kode_penawaran = '$kode' group by jenis_barang");
-	$judul2 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '2' and kode_penawaran = '$kode' group by jenis_barang");
-	$judul3 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '3' and kode_penawaran = '$kode' group by jenis_barang");
-	$q_infra = mysql_query("select * from penawaran_dtl where urutan_jb = '1' and kode_penawaran = '$kode'");
-	$q_material = mysql_query("select * from penawaran_dtl where urutan_jb = '2' and kode_penawaran = '$kode'");
-	$q_jasa = mysql_query("select * from penawaran_dtl where urutan_jb = '3' and kode_penawaran = '$kode'");
+	$q_edit = mysql_query("select * from penawaran_hdr where kode_pp = '$kode' AND token='".$token."'");
+	$judul1 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '1' and kode_pp = '$kode' group by jenis_barang");
+	$judul2 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '2' and kode_pp = '$kode' group by jenis_barang");
+	$judul3 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '3' and kode_pp = '$kode' group by jenis_barang");
+	$q_infra = mysql_query("select * from penawaran_dtl where urutan_jb = '1' and kode_pp = '$kode'");
+	$q_material = mysql_query("select * from penawaran_dtl where urutan_jb = '2' and kode_pp = '$kode'");
+	$q_jasa = mysql_query("select * from penawaran_dtl where urutan_jb = '3' and kode_pp = '$kode'");
 	
 	$iteminfra = "INSERT INTO infrastructure_dtl_tmp (model_item, description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, id_form)
 					SELECT model_item, description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, '".$id_form."' id_form 
-					FROM penawaran_dtl WHERE kode_penawaran = '".$kode."' AND token='".$token."' AND urutan_jb='1' ORDER BY model_item ASC ";										
+					FROM penawaran_dtl WHERE kode_pp = '".$kode."' AND token='".$token."' AND urutan_jb='1' ORDER BY model_item ASC ";										
 	mysql_query($iteminfra);
 			
 	$query			= "SELECT * FROM infrastructure_dtl_tmp WHERE id_form='".$id_form."'";
@@ -41,7 +41,7 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 	
 	$itemmat = "INSERT INTO material_dtl_tmp (description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, id_form)
 					SELECT description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, '".$id_form."' id_form 
-					FROM penawaran_dtl WHERE kode_penawaran = '".$kode."' AND token='".$token."' AND urutan_jb='2' ORDER BY description_item ASC ";										
+					FROM penawaran_dtl WHERE kode_pp = '".$kode."' AND token='".$token."' AND urutan_jb='2' ORDER BY description_item ASC ";										
 	mysql_query($itemmat);
 			
 	$query2			= "SELECT * FROM material_dtl_tmp WHERE id_form='".$id_form."'";
@@ -57,7 +57,7 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 	
 	$itemjasa = "INSERT INTO jasa_dtl_tmp (description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, id_form)
 					SELECT description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, '".$id_form."' id_form 
-					FROM penawaran_dtl WHERE kode_penawaran = '".$kode."' AND token='".$token."' AND urutan_jb='3' ORDER BY description_item ASC ";										
+					FROM penawaran_dtl WHERE kode_pp = '".$kode."' AND token='".$token."' AND urutan_jb='3' ORDER BY description_item ASC ";										
 	mysql_query($itemjasa);
 			
 	$query3			= "SELECT * FROM jasa_dtl_tmp WHERE id_form='".$id_form."'";
@@ -93,11 +93,11 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 
 		
 			
-	/*	$sql = "update penawaran_hdr set versi='".$versi."', dengan_hormat='".$dengan_hormat."', tanggal = '$tanggal', kepada = '$nama_perusahaan', Up = '$up', perihal = '$perihal', note = '$note'  where kode_penawaran = '".$kode."'";
+	/*	$sql = "update penawaran_hdr set versi='".$versi."', dengan_hormat='".$dengan_hormat."', tanggal = '$tanggal', kepada = '$nama_perusahaan', Up = '$up', perihal = '$perihal', note = '$note'  where kode_pp = '".$kode."'";
 		$query1 = mysql_query ($sql) ;
 	
 		/*if ($query1) {
-		$array = $_POST['kode_penawaran_dtl1'];
+		$array = $_POST['kode_pp_dtl1'];
 		
 			foreach($array as $key=>$item) {
 				$sql_a = "UPDATE penawaran_dtl SET 
@@ -112,12 +112,12 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 											profit		='".$_POST['profit'][$key]."',
 											diskon		='".$_POST['diskon'][$key]."',
 											total		='".$_POST['total'][$key]."'
-											where kode_penawaran ='".$_POST['kode_penawaran_dtl1'][$key]."' ";
+											where kode_pp ='".$_POST['kode_pp_dtl1'][$key]."' ";
 				$query_a = mysql_query ($sql_a) ;
 			}
 			
 		
-		$array = $_POST['kode_penawaran_dtl2'];
+		$array = $_POST['kode_pp_dtl2'];
 		
 			foreach($array as $key=>$item) {
 				$sql_b = "UPDATE penawaran_dtl SET 
@@ -131,12 +131,12 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 											profit		='".$_POST['profit2'][$key]."',
 											diskon		='".$_POST['diskon2'][$key]."',
 											total		='".$_POST['total2'][$key]."'
-											where kode_penawaran ='".$_POST['kode_penawaran_dtl2'][$key]."' ";
+											where kode_pp ='".$_POST['kode_pp_dtl2'][$key]."' ";
 				$query_b = mysql_query ($sql_b) ;
 			}
 			
 		
-		$array = $_POST['kode_penawaran_dtl3'];
+		$array = $_POST['kode_pp_dtl3'];
 		
 			foreach($array as $key=>$item) {
 				$sql_c = "UPDATE penawaran_dtl SET 
@@ -150,7 +150,7 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 											profit		='".$_POST['profit3'][$key]."',
 											diskon		='".$_POST['diskon3'][$key]."',
 											total		='".$_POST['total3'][$key]."'
-											where kode_penawaran ='".$_POST['kode_penawaran_dtl3'][$key]."' ";
+											where kode_pp ='".$_POST['kode_pp_dtl3'][$key]."' ";
 				$query_c = mysql_query ($sql_c) ;
 			}
 			
@@ -171,17 +171,17 @@ if(isset($_GET['action']) and $_GET['action'] == "opsi") {
 	$token = mres($_GET['token']);
 	$id_form = mres($_GET['id_form']);
 	
-	$q_edit = mysql_query("select * from penawaran_hdr where kode_penawaran = '$kode' AND token='".$token."'");
-	$judul1 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '1' and kode_penawaran = '$kode' group by jenis_barang");
-	$judul2 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '2' and kode_penawaran = '$kode' group by jenis_barang");
-	$judul3 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '3' and kode_penawaran = '$kode' group by jenis_barang");
-	$q_infra = mysql_query("select * from penawaran_dtl where urutan_jb = '1' and kode_penawaran = '$kode'");
-	$q_material = mysql_query("select * from penawaran_dtl where urutan_jb = '2' and kode_penawaran = '$kode'");
-	$q_jasa = mysql_query("select * from penawaran_dtl where urutan_jb = '3' and kode_penawaran = '$kode'");
+	$q_edit = mysql_query("select * from penawaran_hdr where kode_pp = '$kode' AND token='".$token."'");
+	$judul1 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '1' and kode_pp = '$kode' group by jenis_barang");
+	$judul2 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '2' and kode_pp = '$kode' group by jenis_barang");
+	$judul3 = mysql_query("select jenis_barang from penawaran_dtl where urutan_jb = '3' and kode_pp = '$kode' group by jenis_barang");
+	$q_infra = mysql_query("select * from penawaran_dtl where urutan_jb = '1' and kode_pp = '$kode'");
+	$q_material = mysql_query("select * from penawaran_dtl where urutan_jb = '2' and kode_pp = '$kode'");
+	$q_jasa = mysql_query("select * from penawaran_dtl where urutan_jb = '3' and kode_pp = '$kode'");
 	
 	$iteminfra = "INSERT INTO infrastructure_dtl_tmp (model_item, description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, id_form)
 					SELECT model_item, description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, '".$id_form."' id_form 
-					FROM penawaran_dtl WHERE kode_penawaran = '".$kode."' AND token='".$token."' AND urutan_jb='1' ORDER BY model_item ASC ";										
+					FROM penawaran_dtl WHERE kode_pp = '".$kode."' AND token='".$token."' AND urutan_jb='1' ORDER BY model_item ASC ";										
 	mysql_query($iteminfra);
 			
 	$query			= "SELECT * FROM infrastructure_dtl_tmp WHERE id_form='".$id_form."'";
@@ -197,7 +197,7 @@ if(isset($_GET['action']) and $_GET['action'] == "opsi") {
 	
 	$itemmat = "INSERT INTO material_dtl_tmp (description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, id_form)
 					SELECT description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, '".$id_form."' id_form 
-					FROM penawaran_dtl WHERE kode_penawaran = '".$kode."' AND token='".$token."' AND urutan_jb='2' ORDER BY description_item ASC ";										
+					FROM penawaran_dtl WHERE kode_pp = '".$kode."' AND token='".$token."' AND urutan_jb='2' ORDER BY description_item ASC ";										
 	mysql_query($itemmat);
 			
 	$query2			= "SELECT * FROM material_dtl_tmp WHERE id_form='".$id_form."'";
@@ -213,7 +213,7 @@ if(isset($_GET['action']) and $_GET['action'] == "opsi") {
 	
 	$itemjasa = "INSERT INTO jasa_dtl_tmp (description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, id_form)
 					SELECT description_item, qty, satuan, harga, harga_hpp, profit, diskon, id_profit, id_diskon, '".$id_form."' id_form 
-					FROM penawaran_dtl WHERE kode_penawaran = '".$kode."' AND token='".$token."' AND urutan_jb='3' ORDER BY description_item ASC ";										
+					FROM penawaran_dtl WHERE kode_pp = '".$kode."' AND token='".$token."' AND urutan_jb='3' ORDER BY description_item ASC ";										
 	mysql_query($itemjasa);
 			
 	$query3			= "SELECT * FROM jasa_dtl_tmp WHERE id_form='".$id_form."'";
@@ -232,7 +232,7 @@ if(isset($_GET['action']) and $_GET['action'] == "opsi") {
 
 
 if(isset($_POST['batal_penawaran'])) {
-	$kode = mres($_POST['kode_penawaran']);
+	$kode = mres($_POST['kode_pp']);
 	$alasan_batal = mres ($_POST['alasan_batal']);
 	
 	define('LOG','log.txt');
@@ -246,7 +246,7 @@ if(isset($_POST['batal_penawaran'])) {
     $user_posting = $_SESSION['app_user'];
 
 	
-	$sql = "update penawaran_hdr set status = '1', alasan_batal = '$alasan_batal' where kode_penawaran = '".$kode."'";
+	$sql = "update penawaran_hdr set status = '1', alasan_batal = '$alasan_batal' where kode_pp = '".$kode."'";
 		$query = mysql_query ($sql) ;
 		
 		if ($query) {
@@ -270,12 +270,12 @@ if(isset($_GET['action']) and $_GET['action'] == "track") {
 	$q_penawaran_next = mysql_query("SELECT id_penawaran FROM penawaran_hdr WHERE id_penawaran = (select min(id_penawaran) FROM penawaran_hdr WHERE id_penawaran > ".$id_penawaran.")");
 	
 	$penawaran_hdr = mysql_query("SELECT * FROM penawaran_hdr WHERE id_penawaran = '".$id_penawaran."'");
-	$judul1 = mysql_query("SELECT dtl.jenis_barang FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_penawaran=dtl.kode_penawaran where dtl.urutan_jb = '1' and hdr.id_penawaran  = '".$id_penawaran."' group by dtl.jenis_barang");
-	$judul2 = mysql_query("SELECT dtl.jenis_barang FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_penawaran=dtl.kode_penawaran where dtl.urutan_jb = '2' and hdr.id_penawaran  = '".$id_penawaran."' group by dtl.jenis_barang");
-	$judul3 = mysql_query("SELECT dtl.jenis_barang FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_penawaran=dtl.kode_penawaran where dtl.urutan_jb = '3' and hdr.id_penawaran  = '".$id_penawaran."' group by dtl.jenis_barang");
-	$infrastructure = mysql_query("SELECT dtl.*,hdr.id_penawaran FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_penawaran=dtl.kode_penawaran where dtl.urutan_jb = '1' and hdr.id_penawaran  = '".$id_penawaran."'");
-	$material = mysql_query("SELECT dtl.*,hdr.id_penawaran FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_penawaran=dtl.kode_penawaran where dtl.urutan_jb = '2' and hdr.id_penawaran = '".$id_penawaran."'");
-	$jasa = mysql_query("SELECT dtl.*,hdr.id_penawaran FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_penawaran=dtl.kode_penawaran where dtl.urutan_jb = '3' and hdr.id_penawaran = '".$id_penawaran."'");
+	$judul1 = mysql_query("SELECT dtl.jenis_barang FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_pp=dtl.kode_pp where dtl.urutan_jb = '1' and hdr.id_penawaran  = '".$id_penawaran."' group by dtl.jenis_barang");
+	$judul2 = mysql_query("SELECT dtl.jenis_barang FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_pp=dtl.kode_pp where dtl.urutan_jb = '2' and hdr.id_penawaran  = '".$id_penawaran."' group by dtl.jenis_barang");
+	$judul3 = mysql_query("SELECT dtl.jenis_barang FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_pp=dtl.kode_pp where dtl.urutan_jb = '3' and hdr.id_penawaran  = '".$id_penawaran."' group by dtl.jenis_barang");
+	$infrastructure = mysql_query("SELECT dtl.*,hdr.id_penawaran FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_pp=dtl.kode_pp where dtl.urutan_jb = '1' and hdr.id_penawaran  = '".$id_penawaran."'");
+	$material = mysql_query("SELECT dtl.*,hdr.id_penawaran FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_pp=dtl.kode_pp where dtl.urutan_jb = '2' and hdr.id_penawaran = '".$id_penawaran."'");
+	$jasa = mysql_query("SELECT dtl.*,hdr.id_penawaran FROM penawaran_hdr hdr INNER JOIN penawaran_dtl dtl on hdr.kode_pp=dtl.kode_pp where dtl.urutan_jb = '3' and hdr.id_penawaran = '".$id_penawaran."'");
 	
 }
 

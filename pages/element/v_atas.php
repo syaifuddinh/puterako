@@ -41,10 +41,11 @@
 	<script src="<?=base_url()?>assets/select2/select2.js"></script>
     <script>
     $(document).ready(function (e) {
-        
-        $(".select2").select2({
-          width: '100%'
-         });
+        if($(".select2")) {
+          $(".select2").css({
+            width: '100%'
+           });
+        }
     });
     </script>
       <link href="<?=base_url()?>assets/jquery-ui-1.11.4/smoothness/jquery-ui.css" rel="stylesheet" />

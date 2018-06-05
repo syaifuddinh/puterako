@@ -42,7 +42,20 @@
 <div class="panel panel-default">
 				<div class="panel-body">
                
-										<form role="form" method="post" action="" id="saveForm" >								
+										<form role="form" method="post" action="" id="saveForm" >				
+                                        <div class="form-group col-md-12 col-sm-2 col-xs-12">
+                                            <label>Kode Survey</label>
+                                            <input type="text" name="kode_survey" id="kode_pp"  value="<?=$res['kd_survey']?>" class="form-control" readonly="readonly">
+                                       
+                                        </div>    
+
+                                        <div class="form-group col-md-12 col-sm-2 col-xs-12">
+                                            <label>Kode Proyek</label>
+                                            <input type="text" name="kode_pp" id="kode_pp"  value="<?=$res['kd_proyek']?>" class="form-control" readonly="readonly">
+                                       
+                                        </div>    
+
+
 										<div class="form-group col-md-12 col-sm-2 col-xs-12">
 											<label>Kode Proyek</label>
 											<input type="text" name="kode_pp" id="kode_pp"  value="<?=$res['kd_proyek']?>" class="form-control" readonly="readonly">

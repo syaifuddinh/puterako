@@ -388,13 +388,18 @@
 	
 	if( isset( $_REQUEST['func'] ) and @$_REQUEST['func'] == "edit" ){
 		if(isset($_SESSION['data_survey']) and count($_SESSION['data_survey']) > 0) {
+			$kd_survey = $_POST['kd_survey'];
 			$id = $_POST['kd_proyek'];
 			$token = $_POST['token'];
 			$id_form = $_POST['id_form'];
 			$foto = $_FILES['UploadFile']['name'];
 			$tanggal = date("Y-m-d",strtotime($_POST['tanggal']));
 			$fotobaru = date('His').$foto;
-			
+			// membuat ref / kode referensi
+			$cmd = "SELECT COUNT(id_fs_hdr) AS kode_ref FROM fs_hdr WHERE kd_proyek='$id'";
+			$go = mysql_query($cmd);
+			$resp = mysql_fetch_array($go);
+			$ref = $resp['kode_ref'];
 
 
 		/*	$target_dir = "../images/"; //Menentukan lokasi direktori dimana kita akan menyimpan gambar hasil upload
@@ -432,7 +437,9 @@
 
 			$mySql	= "INSERT INTO fs_hdr SET 
 						kd_proyek	='".$id."', 
+						kd_survey = '$kd_survey',
 						nama_proyek	='".$_POST['nama_proyek']."',
+						ref = '$ref',
 						alamat	='".$_POST['alamat']."',
 						up	='".$_POST['up']."',
 						jabatan	='".$_POST['jabatan']."',

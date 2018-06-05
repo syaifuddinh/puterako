@@ -44,7 +44,7 @@
 									<form role="form" method="post" action="" id="saveForm">								
 										<div class="form-group">
 											<label class="control-label col-md-6 col-sm-2 col-xs-12">No Penawaran</label>
-											<input type="text" name="kode_penawaran" id="kode_penawaran" url="<?=base_url()?>ajax/r_penawaran.php" autocomplete="off" class="form-control" placeholder="Input Kode Penawaran / Ambil Data Dari PP" value="<?=(isset($row['kd_proyek']) ? $row['kd_proyek'] : '')?>" required>
+											<input type="text" name="kode_pp" id="kode_penawaran" url="<?=base_url()?>ajax/r_penawaran.php" autocomplete="off" class="form-control" placeholder="Input Kode Penawaran / Ambil Data Dari PP" value="<?=(isset($row['kode_pp']) ? $row['kode_pp'] : '')?>" required>
                                             <?php   $idtem = "INSERT INTO form_id SET kode_form ='".$id_form."' ";
                             mysql_query($idtem); ?>
                             
@@ -81,16 +81,9 @@
 											<label class="control-label col-md-2 col-sm-2 col-xs-12">Perihal</label>
 											<input type="text" name="perihal" id="perihal" class="form-control" placeholder="Perihal..." required>
 										</div>
+                                        
                                         <div class="form-group">
-											<label class="control-label col-md-2 col-sm-2 col-xs-12">Kategori</label>
-											<select id="kategori" name="kategori" class="form-control">
-                                                <option value="0">-- Pilih Kategori --</option>
-                                                <option value="Service">Service</option>
-                                                <option value="Project">Project</option>
-                                            </select>
-										</div>
-                                        <div class="form-group">
-											<label class="control-label col-md-2 col-sm-2 col-xs-12">Hormat Kami</label>
+											<label class="control-label col-md-2 col-sm-2 col-xs-12">Tertanda</label>
 											<input type="text" name="hormat_kami" id="hormat_kami" class="form-control" placeholder="hormat kami..." required>
 										</div>
                                         
@@ -545,15 +538,15 @@
 										        
 											<tr>
                                                 <td> <?php echo $n++ ?></td>
-												<td><a href="<?=base_url()?>?page=penawaran_track&action=track&kode=<?=$data['id_penawaran']?>"><?php echo $data['kode_penawaran'];?></a></td>
+												<td><a href="<?=base_url()?>?page=penawaran_track&action=track&kode=<?=$data['id_penawaran']?>"><?php echo $data['kode_pp'];?></a></td>
                                                 <td> <?php echo $data['versi'];?></td>
                                                 <td> <?php echo $data['kepada'];?></td>
 												<td> <?php echo date("d-m-Y",strtotime($data['tanggal']));?></td>
 												<td> <?php echo $data['Up'];?></td>
                                                 <td align="center"><?php if ($data['status']=='0'){echo '<button type="button" class="btn btn-success">OPEN</button>';}elseif($data['status']=='2'){echo '<span class="btn btn-mini fa fa-remove">CLOSE</span>';}else {echo '<button type="button" class="btn btn-danger">BATAL</button>';} ?></td>
 												<td>
-                                         <?php if ($data['status']<>'2') {?>        <a href="<?=base_url()?>?page=penawaran_rev&action=edit&kode=<?=$data['kode_penawaran']?>&token=<?=$data['token']?>&id_form=<?=$id_form?>"><button type="button" class="btn btn-success"> REVISI </button></a>                       
-                                               <a href="<?=base_url()?>r_cetak_penawaran.php?kode=<?=$data['kode_penawaran']?>&token=<?=$data['token']?>" target="_blank"> <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-print"></span> Print</button></a>               <?php } ?>
+                                         <?php if ($data['status']<>'2') {?>        <a href="<?=base_url()?>?page=penawaran_rev&action=edit&kode=<?=$data['kode_pp']?>&token=<?=$data['token']?>&id_form=<?=$id_form?>"><button type="button" class="btn btn-success"> REVISI </button></a>                       
+                                               <a href="<?=base_url()?>r_cetak_penawaran.php?kode=<?=$data['kode_pp']?>&token=<?=$data['token']?>" target="_blank"> <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-print"></span> Print</button></a>               <?php } ?>
 											
 												</td>
 											</tr>
@@ -601,8 +594,8 @@
 				{
 					//var msg = html.split("||");
 					//if(msg[0] == "00") {
-						
-						window.location = '<?=base_url()?>?page=penawaran';
+						console.log(html);
+						// window.location = '<?=base_url()?>?page=penawaran';
 					//} else {
 					//	notifError(msg[1]);
 				//	}

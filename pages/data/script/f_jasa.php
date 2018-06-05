@@ -8,8 +8,12 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 	$token = mres($_GET['token']);
 	$id_form = mres($_GET['id_form']);
 	
-	$q_edit = mysql_query("SELECT * FROM fjasa_hdr WHERE kd_jasa = '".$kode."' AND token='".$token."' ");
-	$q_edit_dtl = mysql_query("SELECT * FROM fjasa_dtl WHERE kd_jasa = '".$kode."' AND token='".$token."' ORDER BY description ASC");
+	$q_edit_cmd = "SELECT * FROM fjasa_hdr WHERE kd_jasa = '".$kode."' AND token='".$token."' ";
+	$q_edit = mysql_query($q_edit_cmd);
+
+	$q_dtl_cmd = "SELECT * FROM fjasa_dtl WHERE kd_jasa = '".$kode."' AND token='".$token."' ORDER BY description ASC";
+	
+	$q_edit_dtl = mysql_query($q_dtl_cmd);
 	
 	$itemjasa = "INSERT INTO fjasa_dtl_tmp (description, vol, hari, orang, unit, total, id_form)
 					SELECT description, vol, hari, orang, unit, ((vol*hari*orang)*(unit)) total, '".$id_form."' id_form 

@@ -315,9 +315,28 @@
 			$id = $_POST['kd_jasa'];
 			$token = $_POST['token'];
 			$tgl_input = date("Y-m-d H:i:s");
-		
+
+			if(isset($_REQUEST['state'] ) and @$_REQUEST['state'] == "edit") {
+				$kd_jasa = $_POST['kd_jasa'];
+				// membuat ref / kode referensi
+			$cmd = "SELECT COUNT(id_fjasa_hdr) AS kode_ref FROM fjasa_hdr WHERE kd_jasa='$kd_jasa'";
+			$go = mysql_query($cmd);
+			$resp = mysql_fetch_array($go);
+			$ref = $resp['kode_ref'];
+
+			}
+			else {
+				// Membuat kode jasa
+				$jasa_cmd = "SELECT MAX(id_fjasa_hdr) + 1 AS kd_jasa FROM fjasa_hdr";
+				$go = mysql_query($jasa_cmd);
+				$resp = mysql_fetch_array($go);
+				$kd_jasa = 'jasa' . $resp['kd_jasa'];
+				$ref = 0;
+			}
+
 			$mySql	= "INSERT INTO fjasa_hdr SET 
-						kd_jasa		='".$id."', 
+						kd_jasa		='".$kd_jasa."',
+						ref = $ref, 
 						deskripsi	='".$_POST['deskripsi']."',
 						token		='".$token."',
 						tgl_input	='".$tgl_input."',
@@ -331,7 +350,7 @@
 				$array = $_SESSION['data_jasa'.$id_form.''];
 				foreach($array as $key=>$item){
 					$itemSql1 = "INSERT INTO fjasa_dtl SET 
-											kd_jasa		='".$id."',
+											kd_jasa		='".$kd_jasa."',
 											description	='".$item['description']."',
 											vol      	='".$item['vol']."',
 											hari		='".$item['hari']."',

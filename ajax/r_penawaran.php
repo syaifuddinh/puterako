@@ -859,17 +859,21 @@
 	
 	if( isset( $_REQUEST['func'] ) and @$_REQUEST['func'] == "save" ){
 		$id_form=$_POST['id_form'];
-		if(isset($_SESSION['data_infrastructure'.$id_form.'']) and count($_SESSION['data_infrastructure'.$id_form.''] and $_SESSION['data_material'.$id_form.'']) and count($_SESSION['data_material'.$id_form.''] and $_SESSION['data_jasa'.$id_form.'']) and count($_SESSION['data_jasa'.$id_form.'']) > 0) {
+		if((isset($_SESSION['data_infrastructure'.$id_form.'']) and count($_SESSION['data_infrastructure'.$id_form.'']) > 0) or (isset($_SESSION['data_material'.$id_form.'']) and count($_SESSION['data_material'.$id_form.'']) > 0) or (isset($_SESSION['data_jasa'.$id_form.'']) and count($_SESSION['data_jasa'.$id_form.'']) > 0)) {
 			$id_form=$_POST['id_form'];
-			$id = $_POST['kode_penawaran'];
+			$id = $_POST['kode_pp'];
 			$token = $_POST['token'];
 			$tanggal	= date("Y-m-d",strtotime($_POST['tanggal']));
 			$perilah1	= $_POST['perihal1'];
 			$perilah2	= $_POST['perihal2'];
 			$perilah3	= $_POST['perihal3'];
 			$versi 		= buatOpsi($id);
+			// Membuat kode penawaran
+			$kd_penawaran = buat_no_penawaran($id, $tanggal);
 			$mySql	= "INSERT INTO penawaran_hdr SET 
-						kode_penawaran	='".$id."', 
+						kode_pp	='".$id."',
+						kode_penawaran = '$kd_penawaran',
+						ref = 0, 
 						versi			='".$versi."',
 						dengan_hormat	='".$_POST['dengan_hormat']."', 
 						tanggal			='".$tanggal."',
@@ -877,12 +881,13 @@
 						Up				='".$_POST['up']."',
 						perihal			='".$_POST['perihal']."',
 						note			='".$_POST['note']."',
-						kategori		='".$_POST['kategori']."',
 						hormat_kami		='".$_POST['hormat_kami']."',
 						token			='".$token."',
-						status 			= '0' ";	
+						status 			= '0' ";
+				
 			if(mysql_query($mySql)) {
 				$array = $_SESSION['data_infrastructure'.$id_form.''];
+				$grand_totalin = 0;
 				foreach($array as $key=>$item){
 					$totalin =($item['jumlah']*$item['harga']);
 					$grand_totalin += $totalin;
@@ -994,7 +999,7 @@
 		
 	if( isset( $_REQUEST['func'] ) and @$_REQUEST['func'] == "edit" ){
 		$id_form=$_POST['id_form'];
-		if(isset($_SESSION['data_infrastructure'.$id_form.'']) and count($_SESSION['data_infrastructure'.$id_form.''] and $_SESSION['data_material'.$id_form.'']) and count($_SESSION['data_material'.$id_form.''] and $_SESSION['data_jasa'.$id_form.'']) and count($_SESSION['data_jasa'.$id_form.'']) > 0) {
+		if((isset($_SESSION['data_infrastructure'.$id_form.'']) and count($_SESSION['data_infrastructure'.$id_form.'']) or ($_SESSION['data_material'.$id_form.'']) and count($_SESSION['data_material'.$id_form.'']) or ($_SESSION['data_jasa'.$id_form.'']) and count($_SESSION['data_jasa'.$id_form.'']) > 0)) {
 			$id_form=$_POST['id_form'];
 			$id = $_POST['kode_penawaran'];
 			$token = $_POST['token'];

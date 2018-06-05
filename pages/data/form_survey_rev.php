@@ -36,7 +36,7 @@
 									
 								}
 								?>
-									<form role="form" method="post" action="" id="editForm" >								
+									<form role="form" method="post" action="" id="editForm" >						<input type="hidden" name="kd_survey" value="<?php echo $row['kd_survey'] ?>">				
 										<div class="form-group col-md-12 col-sm-2 col-xs-12">
 											<label>No Penawaran</label>
 											<input type="text" name="kd_proyek" id="kd_proyek" placeholder="Ambil Dari Kode Penawaran" class="form-control" url="<?=base_url()?>ajax/r_fs.php" <?=(isset($row['kd_proyek']) ? "readonly": "")?> value="<?=(isset($row['kd_proyek']) ? $row['kd_proyek'] : '')?>" required> <input type="hidden" name="id_form" id="id_form" value="<?php echo $id_form; ?>"/> 
@@ -126,13 +126,15 @@
 												if(isset($_SESSION['data_survey']) and count(@$_SESSION['data_survey']) > 0) {
 									$n=1;
 									$array = $_SESSION['data_survey'];
+									$grand_total = 0;
 									foreach($array as $key=>$item) {
+										$grand_total += $item['jumlah'];
 												?>
                                             <tr>
                                             	<td><?php echo $n++ ?></td>
                                                 <td><?php echo $item['kode_barang'];?> </td>
                                                 <td><?php echo $item['lokasi'];?></td>
-                                                <td><?php echo $item['jumlah'];?></td>
+                                                <td class='jumlah_barang'><?php echo $item['jumlah'];?></td>
                                                 <td><?php echo $item['satuan'];?></td>
                                                 <td>
 <!--                                                <a href="" class="label label-primary" data-toggle="modal"  data-target="#tambah_survey"><i class="fa fa-plus-circle"></i></a> -->
@@ -259,7 +261,16 @@
   <script>
   $(document).ready(function (e) {
 	 $("#editForm").on('submit',(function(e) {
-		var grand_total = parseFloat($("#b_grand_total").val());
+		var grand_total = 0;
+		// Menghitung jumlah barang
+		var jumlah_barang = $('.jumlah_barang');
+		if(jumlah_barang.length > 0) {
+			jumlah_barang.each(function(x){
+				grand_total += parseInt($(this).text());
+			});
+			
+		}
+		
 		if(grand_total == "" || isNaN(grand_total)) {grand_total = 0;}
 		e.preventDefault();
 	  	if(grand_total != 0) {			

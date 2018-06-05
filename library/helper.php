@@ -217,13 +217,38 @@ function buat_no_survey($no_permintaan, $tanggal_mentah) {
 		$bulan = date_format($tanggal, 'n');
 		$bulan_romawi = romanNumerals($bulan);
 		// Query untuk menampilkan nomer urut
-		$command = "SELECT COUNT(tanggal) + 1 AS jumlah FROM permintaan_penawaran WHERE YEAR(tanggal) = " . date_format($tanggal, 'Y') . " AND MONTH(tanggal) = $bulan";
+		$command = "SELECT COUNT(tanggal) + 1 AS jumlah FROM fs_hdr WHERE YEAR(tanggal) = " . date_format($tanggal, 'Y') . " AND MONTH(tanggal) = $bulan";
 
 		$do_command = mysql_query($command);
 		$res = mysql_fetch_array($do_command);
 		$no_urut = $res['jumlah'];
 
 		$hasil = 'SV/' . $parts[0] . '/' . $parts[1] . '/' . $no_urut . '/' . $parts[3] . '/' . $bulan_romawi . '/' . $tahun;
+		
+		return $hasil;
+
+	}
+	else
+		return false;
+	
+}
+
+function buat_no_penawaran($no_permintaan, $tanggal_mentah) {
+	if($no_permintaan !== '') {
+		$parts = explode("/", $no_permintaan);
+		$tanggal = date_create($tanggal_mentah);
+		$baca_tanggal = date_format($tanggal, 'Y-m-d');	
+		$tahun = date_format($tanggal, 'y');
+		$bulan = date_format($tanggal, 'n');
+		$bulan_romawi = romanNumerals($bulan);
+		// Query untuk menampilkan nomer urut
+		$command = "SELECT COUNT(tanggal) + 1 AS jumlah FROM penawaran_hdr WHERE YEAR(tanggal) = " . date_format($tanggal, 'Y') . " AND MONTH(tanggal) = $bulan";
+
+		$do_command = mysql_query($command);
+		$res = mysql_fetch_array($do_command);
+		$no_urut = $res['jumlah'];
+
+		$hasil = 'P/' . $parts[0] . '/' . $parts[1] . '/' . $no_urut . '/' . $parts[3] . '/' . $bulan_romawi . '/' . $tahun;
 		
 		return $hasil;
 
